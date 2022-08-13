@@ -13,7 +13,7 @@ const messageTpl = `
 				case interface{ ValidateAll() error }:
 					if err := v.ValidateAll(); err != nil {
 						{{ if ne $r.GetErrorMsg "" }}
-						errors = append(errors, {{ errCause . $r.GetErrorMsg }})
+						errors = append(errors, {{ err . $r.GetErrorMsg }})
 						{{ else }}
 						errors = append(errors, {{ errCause . "err" "embedded message failed validation" }})
 						{{ end }}
@@ -22,7 +22,7 @@ const messageTpl = `
 					{{- /* Support legacy validation for messages that were generated with a plugin version prior to existence of ValidateAll() */ -}}
 					if err := v.Validate(); err != nil {
 						{{ if ne $r.GetErrorMsg "" }}
-						errors = append(errors, {{ errCause . $r.GetErrorMsg }})
+						errors = append(errors, {{ err . $r.GetErrorMsg }})
 						{{ else }}
 						errors = append(errors, {{ errCause . "err" "embedded message failed validation" }})
 						{{ end }}
@@ -31,7 +31,7 @@ const messageTpl = `
 		} else if v, ok := interface{}({{ accessor . }}).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				{{ if ne $r.GetErrorMsg "" }}
-				errors = append(errors, {{ errCause . $r.GetErrorMsg }})
+				errors = append(errors, {{ err . $r.GetErrorMsg }})
 				{{ else }}
 				errors = append(errors, {{ errCause . "err" "embedded message failed validation" }})
 				{{ end }}

@@ -202,7 +202,7 @@ const strTpl = `
 	{{ else if $r.GetEmail }}
 		if err := m._validateEmail({{ accessor . }}); err != nil {
 			{{ if ne $r.GetErrorMsg "" }}
-			err = {{ errCause . $r.GetErrorMsg }}
+			err = {{ err . $r.GetErrorMsg }}
 			{{ else }}
 			err = {{ errCause . "err" "value must be a valid email address" }}
 			{{ end }}
@@ -212,7 +212,7 @@ const strTpl = `
 	{{ else if $r.GetHostname }}
 		if err := m._validateHostname({{ accessor . }}); err != nil {
 			{{ if ne $r.GetErrorMsg "" }}
-			err = {{ errCause . $r.GetErrorMsg }}
+			err = {{ err . $r.GetErrorMsg }}
 			{{ else }}
 			err = {{ errCause . "err" "value must be a valid hostname" }}
 			{{ end }}
@@ -234,7 +234,7 @@ const strTpl = `
 	{{ else if $r.GetUri }}
 		if uri, err := url.Parse({{ accessor . }}); err != nil {
 			{{ if ne $r.GetErrorMsg "" }}
-			err = {{ errCause . $r.GetErrorMsg }}
+			err = {{ err . $r.GetErrorMsg }}
 			{{ else }}
 			err = {{ errCause . "err" "value must be a valid URI" }}
 			{{ end }}
@@ -252,7 +252,7 @@ const strTpl = `
 	{{ else if $r.GetUriRef }}
 		if _, err := url.Parse({{ accessor . }}); err != nil {
 			{{ if ne $r.GetErrorMsg "" }}
-			err = {{ errCause . $r.GetErrorMsg }}
+			err = {{ err . $r.GetErrorMsg }}
 			{{ else }}
 			err = {{ errCause . "err" "value must be a valid URI" }}
 			{{ end }}
@@ -262,7 +262,7 @@ const strTpl = `
 	{{ else if $r.GetUuid }}
 		if err := m._validateUuid({{ accessor . }}); err != nil {
 			{{ if ne $r.GetErrorMsg "" }}
-			err = {{ errCause . $r.GetErrorMsg }}
+			err = {{ err . $r.GetErrorMsg }}
 			{{ else }}
 			err = {{ errCause . "err" "value must be a valid UUID" }}
 			{{ end }}
