@@ -1,14 +1,11 @@
-module protoc-gen-validate
+module github.com/xushuhui/protoc-gen-validate
 
 go 1.17
-
-replace github.com/xushuhui/protoc-gen-validate => /Users/xsh/www/protoc-gen-validate
 
 require (
 	github.com/golang/protobuf v1.5.2
 	github.com/iancoleman/strcase v0.2.0
 	github.com/lyft/protoc-gen-star v0.6.0
-	github.com/xushuhui/protoc-gen-validate v0.0.0-00010101000000-000000000000
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
 	golang.org/x/net v0.0.0-20220812174116-3211cb980234
 	golang.org/x/tools v0.1.12
