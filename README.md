@@ -1,2 +1,2 @@
-# protoc-go-validate
+# protoc-gen-validate
 go validate for protobuf
